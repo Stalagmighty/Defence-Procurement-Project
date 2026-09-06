@@ -1,7 +1,9 @@
-CREATE TABLE raw.source_record (
+CREATE SCHEMA IF NOT EXISTS raw;
+
+CREATE TABLE IF NOT EXISTS raw.source_record (
     id            BIGSERIAL PRIMARY KEY,
-    source        TEXT        NOT NULL,      -- 'find_a_tender' | 'companies_house' | 'rss'
-    source_key    TEXT        NOT NULL,      -- the natural id from the source
+    source        TEXT        NOT NULL,
+    source_key    TEXT        NOT NULL,
     payload       JSONB       NOT NULL,
     payload_hash  TEXT        NOT NULL,
     fetched_at    TIMESTAMPTZ NOT NULL DEFAULT now(),
